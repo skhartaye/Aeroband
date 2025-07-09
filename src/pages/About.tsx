@@ -3,26 +3,10 @@ import './About.css'
 const About = () => {
   return (
     <div className="about">
-      {/* Deployment status indicator */}
-      <div style={{ 
-        background: 'green', 
-        color: 'white', 
-        padding: '10px', 
-        textAlign: 'center',
-        position: 'fixed',
-        top: '150px',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        zIndex: 9999,
-        borderRadius: '5px'
-      }}>
-        ✅ DEPLOYMENT STATUS: ACTIVE - {new Date().toLocaleString()}
-      </div>
-      
       <section className="about-hero">
-        <h1 className="page-title">About Aeroband</h1>
+        <h1 className="page-title">About Aeroband.org</h1>
         <p className="page-subtitle">
-          Building the future of custom domain development
+          Building the future of custom domain development at www.aeroband.org
         </p>
       </section>
 
@@ -31,18 +15,25 @@ const About = () => {
           <div className="about-text">
             <h2>Our Mission</h2>
             <p>
-              Aeroband is dedicated to providing developers and businesses with 
+              At Aeroband.org, we're dedicated to providing developers and businesses with 
               the tools they need to create stunning, high-performance websites 
               on their own custom domains. We believe in the power of 
-              customization and developer control.
+              customization and developer control, especially when it comes to domains like www.aeroband.org.
             </p>
             
             <h2>Our Technology</h2>
             <p>
               Built with modern web technologies including React, TypeScript, 
-              and Vite, Aeroband offers a fast, scalable foundation for your 
+              and Vite, Aeroband.org offers a fast, scalable foundation for your 
               web projects. Our platform is designed to be developer-friendly 
               while maintaining excellent performance and user experience.
+            </p>
+            
+            <h2>Domain Expertise</h2>
+            <p>
+              We specialize in custom domain development, particularly for domains like 
+              www.aeroband.org. Our expertise includes DNS configuration, SSL certificates, 
+              and performance optimization for custom domains.
             </p>
           </div>
           
@@ -58,6 +49,10 @@ const About = () => {
             <div className="stat-card">
               <h3>Modern</h3>
               <p>Technology</p>
+            </div>
+            <div className="stat-card">
+              <h3>Secure</h3>
+              <p>SSL Ready</p>
             </div>
           </div>
         </div>

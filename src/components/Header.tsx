@@ -11,7 +11,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo">
-          <h1>Aeroband</h1>
+          <h1>Aeroband.org</h1>
         </Link>
         
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>

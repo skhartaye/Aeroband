@@ -12,6 +12,7 @@ const Contact = () => {
     e.preventDefault()
     // Handle form submission here
     console.log('Form submitted:', formData)
+    alert('Thank you for your message! We will get back to you soon.')
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,9 +25,9 @@ const Contact = () => {
   return (
     <div className="contact">
       <section className="contact-hero">
-        <h1 className="page-title">Contact Us</h1>
+        <h1 className="page-title">Contact Aeroband.org</h1>
         <p className="page-subtitle">
-          Get in touch with the Aeroband team
+          Get in touch with the Aeroband.org team for custom domain solutions
         </p>
       </section>
 
@@ -35,8 +36,8 @@ const Contact = () => {
           <div className="contact-info">
             <h2>Get In Touch</h2>
             <p>
-              Have questions about Aeroband or need help with your custom domain? 
-              We're here to help you build something amazing.
+              Have questions about Aeroband.org or need help with your custom domain setup? 
+              We're here to help you build something amazing for www.aeroband.org.
             </p>
             
             <div className="contact-details">
@@ -52,7 +53,15 @@ const Contact = () => {
                 <span className="contact-icon">🌐</span>
                 <div>
                   <h3>Website</h3>
-                  <p>aeroband.org</p>
+                  <p>www.aeroband.org</p>
+                </div>
+              </div>
+              
+              <div className="contact-item">
+                <span className="contact-icon">🔧</span>
+                <div>
+                  <h3>Services</h3>
+                  <p>Custom Domain Development</p>
                 </div>
               </div>
             </div>
@@ -94,6 +103,7 @@ const Contact = () => {
                   onChange={handleChange}
                   rows={5}
                   required
+                  placeholder="Tell us about your custom domain needs..."
                 ></textarea>
               </div>
               
