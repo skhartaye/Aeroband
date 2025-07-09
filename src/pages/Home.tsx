@@ -1,6 +1,17 @@
 import './Home.css'
+import { useRef } from 'react'
 
 const Home = () => {
+  const featuresRef = useRef<HTMLDivElement>(null)
+
+  const handleLearnMore = () => {
+    featuresRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const handleGetStarted = () => {
+    alert('Coming soon!')
+  }
+
   return (
     <div className="home fade-in">
       <section className="hero fade-in">
@@ -12,8 +23,8 @@ const Home = () => {
             IoT-powered Air Quality Monitoring for a Safer, Healthier Environment
           </p>
           <div className="hero-buttons fade-in" style={{ animationDelay: '0.8s' }}>
-            <button className="btn btn-primary">Get Started</button>
-            <button className="btn btn-secondary">Learn More</button>
+            <button className="btn btn-primary" onClick={handleGetStarted}>Get Started</button>
+            <button className="btn btn-secondary" onClick={handleLearnMore}>Learn More</button>
           </div>
         </div>
         <div className="hero-visual fade-in" style={{ animationDelay: '1s' }}>
@@ -25,7 +36,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="features fade-in" style={{ animationDelay: '1.2s' }}>
+      <section className="features fade-in" style={{ animationDelay: '1.2s' }} ref={featuresRef}>
         <h2 className="section-title">Why Monitor Air Quality?</h2>
         <div className="features-grid">
           <div className="feature-card">
