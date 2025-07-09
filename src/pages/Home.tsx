@@ -3,6 +3,22 @@ import './Home.css'
 const Home = () => {
   return (
     <div className="home">
+      {/* Test element to verify updates */}
+      <div style={{ 
+        background: 'red', 
+        color: 'white', 
+        padding: '10px', 
+        textAlign: 'center',
+        position: 'fixed',
+        top: '100px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 9999,
+        borderRadius: '5px'
+      }}>
+        🚀 SITE IS UPDATED - AEROBAND IS LIVE! 🚀
+      </div>
+      
       <section className="hero">
         <div className="hero-content">
           <h1 className="hero-title">

@@ -3,6 +3,22 @@ import './About.css'
 const About = () => {
   return (
     <div className="about">
+      {/* Deployment status indicator */}
+      <div style={{ 
+        background: 'green', 
+        color: 'white', 
+        padding: '10px', 
+        textAlign: 'center',
+        position: 'fixed',
+        top: '150px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        zIndex: 9999,
+        borderRadius: '5px'
+      }}>
+        ✅ DEPLOYMENT STATUS: ACTIVE - {new Date().toLocaleString()}
+      </div>
+      
       <section className="about-hero">
         <h1 className="page-title">About Aeroband</h1>
         <p className="page-subtitle">
