@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Aeroband
 
 A modern, customizable web application built with React, TypeScript, and Vite. Designed for deployment on custom domains with full developer control.
@@ -159,3 +160,6 @@ MIT License - see LICENSE file for details.
 ---
 
 Built with ❤️ for custom domain development 
+=======
+# Aeroband
+>>>>>>> 63a5a9269e87925e1038a5beddc8718f9ac03cc5
