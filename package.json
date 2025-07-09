@@ -10,7 +10,11 @@
     "lint": "eslint . --ext js,jsx,ts,tsx",
     "format": "prettier --write ."
   },
-  "keywords": ["aeroband", "web", "custom-domain"],
+  "keywords": [
+    "aeroband",
+    "web",
+    "custom-domain"
+  ],
   "author": "skhartaye",
   "license": "MIT",
   "devDependencies": {
@@ -27,8 +31,9 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
+    "emailjs-com": "^3.2.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0"
   }
-} 
+}

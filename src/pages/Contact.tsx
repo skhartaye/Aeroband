@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './Contact.css'
+import emailjs from 'emailjs-com'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,9 +11,25 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! We will get back to you soon.')
+    // EmailJS integration
+    emailjs.send(
+      'service_ydzskmc',
+      'template_b40fmg6',
+      {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message
+      },
+      'QcGF9hIvY60lRudys'
+    )
+    .then(() => {
+      alert('Thank you for your message! We will get back to you soon.')
+      setFormData({ name: '', email: '', message: '' })
+    })
+    .catch((error) => {
+      alert('There was an error sending your message. Please try again later.')
+      console.error('EmailJS error:', error)
+    })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -45,7 +62,7 @@ const Contact = () => {
                 <span className="contact-icon">📧</span>
                 <div>
                   <h3>Email</h3>
-                  <p>hello@aeroband.org</p>
+                  <p>mercadoskhart@aeroband.org</p>
                 </div>
               </div>
               
