@@ -16,6 +16,9 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
         
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
           <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+            App
+          </Link>
+          <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
             Home
           </Link>
           <Link to="/about" className="nav-link" onClick={() => setIsMenuOpen(false)}>
