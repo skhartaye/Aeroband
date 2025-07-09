@@ -23,17 +23,17 @@ const Contact = () => {
   }
 
   return (
-    <div className="contact">
-      <section className="contact-hero">
-        <h1 className="page-title">Contact Aeroband.org</h1>
-        <p className="page-subtitle">
+    <div className="contact fade-in">
+      <section className="contact-hero fade-in" style={{ animationDelay: '0.2s' }}>
+        <h1 className="page-title fade-in" style={{ animationDelay: '0.4s' }}>Contact Aeroband.org</h1>
+        <p className="page-subtitle fade-in" style={{ animationDelay: '0.6s' }}>
           Get in touch with the Aeroband.org team for custom domain solutions
         </p>
       </section>
 
-      <section className="contact-content">
+      <section className="contact-content fade-in" style={{ animationDelay: '0.8s' }}>
         <div className="contact-grid">
-          <div className="contact-info">
+          <div className="contact-info fade-in" style={{ animationDelay: '1s' }}>
             <h2>Get In Touch</h2>
             <p>
               Have questions about Aeroband.org or need help with your custom domain setup? 
@@ -67,7 +67,7 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="contact-form">
+          <div className="contact-form fade-in" style={{ animationDelay: '1.2s' }}>
             <h2>Send us a message</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group">

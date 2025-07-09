@@ -2,17 +2,17 @@ import './About.css'
 
 const About = () => {
   return (
-    <div className="about">
-      <section className="about-hero">
-        <h1 className="page-title">About Aeroband.org</h1>
-        <p className="page-subtitle">
+    <div className="about fade-in">
+      <section className="about-hero fade-in" style={{ animationDelay: '0.2s' }}>
+        <h1 className="page-title fade-in" style={{ animationDelay: '0.4s' }}>About Aeroband.org</h1>
+        <p className="page-subtitle fade-in" style={{ animationDelay: '0.6s' }}>
           Building the future of custom domain development at www.aeroband.org
         </p>
       </section>
 
-      <section className="about-content">
+      <section className="about-content fade-in" style={{ animationDelay: '0.8s' }}>
         <div className="about-grid">
-          <div className="about-text">
+          <div className="about-text fade-in" style={{ animationDelay: '1s' }}>
             <h2>Our Mission</h2>
             <p>
               At Aeroband.org, we're dedicated to providing developers and businesses with 
@@ -37,7 +37,7 @@ const About = () => {
             </p>
           </div>
           
-          <div className="about-stats">
+          <div className="about-stats fade-in" style={{ animationDelay: '1.2s' }}>
             <div className="stat-card">
               <h3>100%</h3>
               <p>Customizable</p>

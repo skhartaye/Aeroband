@@ -65,9 +65,9 @@ code {
   color: white;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-secondary:hover {
   background-color: var(--primary-dark);
-  transform: translateY(-2px);
+  transform: scale(1.05) translateY(-2px);
 }
 
 .btn-secondary {
@@ -102,6 +102,42 @@ code {
   font-weight: 600;
   text-align: center;
   margin-bottom: 3rem;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary-color);
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
 }
 
 @media (max-width: 768px) {
