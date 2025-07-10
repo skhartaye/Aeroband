@@ -44,7 +44,7 @@ const Contact = () => {
       <section className="contact-hero fade-in" style={{ animationDelay: '0.2s' }}>
         <h1 className="page-title fade-in" style={{ animationDelay: '0.4s' }}>Contact Aeroband.org</h1>
         <p className="page-subtitle fade-in" style={{ animationDelay: '0.6s' }}>
-          Get in touch with the Aeroband.org team for custom domain solutions
+          Get in touch with the Aeroband.org team for IoT solutions
         </p>
       </section>
 
@@ -53,7 +53,7 @@ const Contact = () => {
           <div className="contact-info fade-in" style={{ animationDelay: '1s' }}>
             <h2>Get In Touch</h2>
             <p>
-              Have questions about Aeroband.org or need help with your custom domain setup? 
+              Have questions about Aeroband.org or need help with your IoT setup? 
               We're here to help you build something amazing for www.aeroband.org.
             </p>
             
@@ -78,7 +78,7 @@ const Contact = () => {
                 <span className="contact-icon">🔧</span>
                 <div>
                   <h3>Services</h3>
-                  <p>Custom Domain Development<br/>Contact: mercadoskhartaye@gmail.com</p>
+                  <p>IoT Development<br/>Contact: mercadoskhartaye@gmail.com</p>
                 </div>
               </div>
             </div>
@@ -120,7 +120,7 @@ const Contact = () => {
                   onChange={handleChange}
                   rows={5}
                   required
-                  placeholder="Tell us about your custom domain needs..."
+                  placeholder="Tell us about your IoT needs..."
                 ></textarea>
               </div>
               
