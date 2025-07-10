@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aeroband Redirect</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="/static/css/redirect.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Aeroband</h1>
+        <p id="status">{% if ngrok_url %}✅ Connected!{% else %}❌ No ngrok URL found{% endif %}</p>
+        
+        <div class="instructions">
+            <h3>Quick Access:</h3>
+            <ol>
+                <li>Scan the QR code below with your phone</li>
+                <li>Or copy the URL below</li>
+                <li>Open the link on your mobile device</li>
+            </ol>
+        </div>
+
+        {% if ngrok_url %}
+            {% if qr_code %}
+                <div class="qrcode">
+                    <img src="data:image/png;base64,{{ qr_code }}" alt="QR Code">
+                </div>
+            {% else %}
+                <div class="package-install">
+                    <p>To enable QR code generation, please install the required packages:</p>
+                    <code>pip install qrcode pillow</code>
+                </div>
+            {% endif %}
+
+            <div class="url-display">{{ ngrok_url }}</div>
+            <a href="{{ ngrok_url }}/ble-bridge/" class="button">Connect to ESP32</a>
+            <a href="{{ ngrok_url }}/mobile/" class="button">Go to Dashboard</a>
+        {% endif %}
+    </div>
+
+    <script>
+        // Refresh page every 30 seconds
+        setTimeout(function() {
+            window.location.reload();
+        }, 30000);
+    </script>
+</body>
+</html> 

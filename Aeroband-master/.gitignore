@@ -1,0 +1,6 @@
+Pipfile 
+Pipfile.lock
+
+main/migrations/*
+
+*__pycache__*
