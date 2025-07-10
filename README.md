@@ -1,4 +1,4 @@
-![App Screenshot](AEROBAND(1).png)
+![Aeroband Logo](aeroband_prototype.png)
 
 # Aeroband 🏭
 
