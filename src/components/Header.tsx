@@ -7,6 +7,11 @@ interface HeaderProps {
 }
 
 const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
+  const handleAppClick = () => {
+    setIsMenuOpen(false)
+    alert('Coming Soon!')
+  }
+
   return (
     <header className="header">
       <div className="header-container">
@@ -15,9 +20,13 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
         </Link>
         
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
-          <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+          <button 
+            className="nav-link coming-soon" 
+            onClick={handleAppClick}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit' }}
+          >
             App
-          </Link>
+          </button>
           <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
             Home
           </Link>
