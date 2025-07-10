@@ -1,3 +1,5 @@
+![App Screenshot](AEROBAND(1).png)
+
 # Aeroband 🏭
 
 This project is for the Aeroband system, including ESP32 firmware, Django backend, and mobile web interface.
