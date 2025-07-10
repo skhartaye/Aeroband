@@ -97,10 +97,13 @@
   flex-shrink: 0;
 }
 
-.contact-item a {
+.contact-item a, .contact-item span {
+  display: inline;
+  background: none;
+  padding: 0;
+  margin: 0;
   color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  transition: color 0.3s ease;
+  box-shadow: none;
 }
 
 .contact-item a:hover {
