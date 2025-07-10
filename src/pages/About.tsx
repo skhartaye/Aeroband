@@ -6,7 +6,7 @@ const About = () => {
       <section className="about-hero fade-in" style={{ animationDelay: '0.2s' }}>
         <h1 className="page-title fade-in" style={{ animationDelay: '0.4s' }}>About Aeroband.org</h1>
         <p className="page-subtitle fade-in" style={{ animationDelay: '0.6s' }}>
-          Building the future of custom domain development at www.aeroband.org
+          Building the future of IoT development at www.aeroband.org
         </p>
       </section>
 
@@ -16,9 +16,9 @@ const About = () => {
             <h2>Our Mission</h2>
             <p>
               At Aeroband.org, we're dedicated to providing developers and businesses with 
-              the tools they need to create stunning, high-performance websites 
-              on their own custom domains. We believe in the power of 
-              customization and developer control, especially when it comes to domains like www.aeroband.org.
+              the tools they need to create stunning, high-performance IoT solutions. 
+              We believe in the power of customization and developer control, 
+              especially when it comes to IoT projects like www.aeroband.org.
             </p>
             
             <h2>Our Technology</h2>
@@ -29,11 +29,11 @@ const About = () => {
               while maintaining excellent performance and user experience.
             </p>
             
-            <h2>Domain Expertise</h2>
+            <h2>IoT Expertise</h2>
             <p>
-              We specialize in custom domain development, particularly for domains like 
-              www.aeroband.org. Our expertise includes DNS configuration, SSL certificates, 
-              and performance optimization for custom domains.
+              We specialize in IoT development, particularly for projects like 
+              www.aeroband.org. Our expertise includes sensor integration, data analytics, 
+              and performance optimization for IoT solutions.
             </p>
           </div>
           
