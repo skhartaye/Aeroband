@@ -94,7 +94,7 @@ const Home = () => {
               <span className="timeline-dot"></span>
               <strong>May: 1st Prototype</strong>
               <div>
-                <img src="/Prototype_1st.jpg" alt="1st Prototype" style={{ maxWidth: '200px', marginTop: '0.5rem', borderRadius: '6px' }} />
+                <img src="/prototype_1st.jpg" alt="1st Prototype" style={{ maxWidth: '200px', marginTop: '0.5rem', borderRadius: '6px' }} />
               </div>
               <p>Initial working prototype, featuring core hardware and basic functionality. Completed in May.</p>
             </li>
@@ -110,7 +110,7 @@ const Home = () => {
         </div>
 
         <div className="product-feature-section">
-          <img className="product-feature-image" src="/Prototype_1st.jpg" alt="1st Prototype" />
+          <img className="product-feature-image" src="/prototype_1st.jpg" alt="1st Prototype" />
           <div className="product-feature-content">
             <h2>Featured Product: Aeroband Prototype</h2>
             <p>
