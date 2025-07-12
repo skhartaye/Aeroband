@@ -1,6 +1,6 @@
 import './Home.css'
 import { useRef } from 'react'
-import prototype1st from '../assets/prototype_1st.jpg'
+import prototype1st from '../../prototype_1st.jpg'
 
 const Home = () => {
   const featuresRef = useRef<HTMLDivElement>(null)

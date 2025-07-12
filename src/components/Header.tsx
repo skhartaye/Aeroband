@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import './Header.css'
-import aerobandLogo from '../assets/aeroband_logo.png'
+import aerobandLogo from '../../aeroband_logo.png'
 
 interface HeaderProps {
   isMenuOpen: boolean
