@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import './Header.css'
+import aerobandLogo from '../assets/aeroband_logo.png'
 
 interface HeaderProps {
   isMenuOpen: boolean
@@ -16,13 +17,13 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
-          <img src="/Aeroband_logo.png" alt="Aeroband Logo" style={{ height: '96px', width: '96px', objectFit: 'contain', borderRadius: '8px' }} />
+          <img src={aerobandLogo} alt="Aeroband Logo" style={{ height: '96px', width: '96px', objectFit: 'contain', borderRadius: '8px' }} />
           <h1 style={{ margin: 0, fontSize: '1.7rem', color: 'inherit' }}>Aeroband.org</h1>
         </Link>
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
           <button 
             className="nav-link coming-soon" 
-            onClick={() => { setIsMenuOpen(false); alert('Coming Soon!') }}
+            onClick={handleAppClick}
             style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit' }}
           >
             App

@@ -1,5 +1,6 @@
 import './Home.css'
 import { useRef } from 'react'
+import prototype1st from '../assets/prototype_1st.jpg'
 
 const Home = () => {
   const featuresRef = useRef<HTMLDivElement>(null)
@@ -94,7 +95,7 @@ const Home = () => {
               <span className="timeline-dot"></span>
               <strong>May: 1st Prototype</strong>
               <div>
-                <img src="/Prototype_1st.jpg" alt="1st Prototype" style={{ maxWidth: '200px', marginTop: '0.5rem', borderRadius: '6px' }} />
+                <img src={prototype1st} alt="1st Prototype" style={{ maxWidth: '200px', marginTop: '0.5rem', borderRadius: '6px' }} />
               </div>
               <p>Initial working prototype, featuring core hardware and basic functionality. Completed in May.</p>
             </li>
@@ -102,7 +103,7 @@ const Home = () => {
               <span className="timeline-dot"></span>
               <strong>Second Iteration</strong>
               <div style={{ marginTop: '0.5rem', width: '200px', height: '150px', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', color: '#888' }}>
-                Being completed soon!
+                Coming soon!
               </div>
               <p>The next iteration is currently in development and will be released soon with improved features and design.</p>
             </li>
@@ -110,7 +111,7 @@ const Home = () => {
         </div>
 
         <div className="product-feature-section">
-          <img className="product-feature-image" src="/Prototype_1st.jpg" alt="1st Prototype" />
+          <img className="product-feature-image" src={prototype1st} alt="1st Prototype" />
           <div className="product-feature-content">
             <h2>Featured Product: Aeroband Prototype</h2>
             <p>
