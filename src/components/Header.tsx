@@ -16,7 +16,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
-          <img src="/Aeroband_logo.png" alt="Aeroband Logo" style={{ height: '96px', width: '96px', objectFit: 'contain', borderRadius: '8px' }} />
+          <img src="/aeroband_logo.png" alt="Aeroband Logo" style={{ height: '96px', width: '96px', objectFit: 'contain', borderRadius: '8px' }} />
           <h1 style={{ margin: 0, fontSize: '1.7rem', color: 'inherit' }}>Aeroband.org</h1>
         </Link>
         <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
