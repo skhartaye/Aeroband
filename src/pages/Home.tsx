@@ -36,18 +36,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <section className="mission-section fade-in" style={{ animationDelay: '1.1s' }}>
-        <h2 className="section-title">Our Mission & Vision</h2>
-        <p className="mission-lead">We aim to help everyone become more aware of the air we breathe—empowering people to make safer, healthier choices for themselves and their communities.</p>
-        <ul className="mission-beneficiaries">
-          <li><strong>Patients & Sensitive Individuals:</strong> Real-time alerts and data for those most at risk from poor air quality.</li>
-          <li><strong>Researchers:</strong> Access to reliable, actionable air quality data for studies and innovation.</li>
-          <li><strong>Governments & Policy Makers:</strong> Tools and insights to inform public health decisions and create safer environments.</li>
-        </ul>
-        <p className="mission-summary">Together, we can build a world where everyone is informed and protected from the dangers of air pollution—at home, at work, and in public spaces.</p>
-      </section>
-
       <section className="features fade-in" style={{ animationDelay: '1.2s' }} ref={featuresRef}>
         <h2 className="section-title">Why Monitor Air Quality?</h2>
         <div className="features-grid">
