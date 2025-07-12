@@ -74,6 +74,34 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <div className="product-feature-section">
+        <h2>Featured Product: Aeroband Prototype</h2>
+        <img src="/Prototype_1st.jpg" alt="1st Prototype" style={{ maxWidth: '300px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }} />
+        <p>
+          This is the first prototype of our Aeroband project, designed to bring innovative technology to your fingertips. Stay tuned for more updates as we continue to improve and develop our product!
+        </p>
+      </div>
+
+      <div className="timeline-section">
+        <h2>Prototype Timeline</h2>
+        <ul style={{ listStyle: 'none', padding: 0 }}>
+          <li style={{ marginBottom: '2rem' }}>
+            <strong>May: 1st Prototype</strong>
+            <div>
+              <img src="/Prototype_1st.jpg" alt="1st Prototype" style={{ maxWidth: '200px', marginTop: '0.5rem', borderRadius: '6px' }} />
+            </div>
+            <p>Initial working prototype, featuring core hardware and basic functionality. Completed in May.</p>
+          </li>
+          <li>
+            <strong>Second Iteration</strong>
+            <div style={{ marginTop: '0.5rem', width: '200px', height: '150px', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', color: '#888' }}>
+              Being completed soon!
+            </div>
+            <p>The next iteration is currently in development and will be released soon with improved features and design.</p>
+          </li>
+        </ul>
+      </div>
     </div>
   )
 }
