@@ -36,6 +36,17 @@ const Home = () => {
         </div>
       </section>
 
+      <section className="mission-section fade-in" style={{ animationDelay: '1.1s' }}>
+        <h2 className="section-title">Our Mission & Vision</h2>
+        <p className="mission-lead">We aim to help everyone become more aware of the air we breathe—empowering people to make safer, healthier choices for themselves and their communities.</p>
+        <ul className="mission-beneficiaries">
+          <li><strong>Patients & Sensitive Individuals:</strong> Real-time alerts and data for those most at risk from poor air quality.</li>
+          <li><strong>Researchers:</strong> Access to reliable, actionable air quality data for studies and innovation.</li>
+          <li><strong>Governments & Policy Makers:</strong> Tools and insights to inform public health decisions and create safer environments.</li>
+        </ul>
+        <p className="mission-summary">Together, we can build a world where everyone is informed and protected from the dangers of air pollution—at home, at work, and in public spaces.</p>
+      </section>
+
       <section className="features fade-in" style={{ animationDelay: '1.2s' }} ref={featuresRef}>
         <h2 className="section-title">Why Monitor Air Quality?</h2>
         <div className="features-grid">
@@ -75,32 +86,38 @@ const Home = () => {
         </div>
       </section>
 
-      <div className="product-feature-section">
-        <h2>Featured Product: Aeroband Prototype</h2>
-        <img src="/Prototype_1st.jpg" alt="1st Prototype" style={{ maxWidth: '300px', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.15)' }} />
-        <p>
-          This is the first prototype of our Aeroband project, designed to bring innovative technology to your fingertips. Stay tuned for more updates as we continue to improve and develop our product!
-        </p>
-      </div>
+      <div className="product-timeline-row">
+        <div className="timeline-section">
+          <h2>Prototype Timeline</h2>
+          <ul className="timeline-list">
+            <li className="timeline-item">
+              <span className="timeline-dot"></span>
+              <strong>May: 1st Prototype</strong>
+              <div>
+                <img src="/Prototype_1st.jpg" alt="1st Prototype" style={{ maxWidth: '200px', marginTop: '0.5rem', borderRadius: '6px' }} />
+              </div>
+              <p>Initial working prototype, featuring core hardware and basic functionality. Completed in May.</p>
+            </li>
+            <li className="timeline-item">
+              <span className="timeline-dot"></span>
+              <strong>Second Iteration</strong>
+              <div style={{ marginTop: '0.5rem', width: '200px', height: '150px', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', color: '#888' }}>
+                Being completed soon!
+              </div>
+              <p>The next iteration is currently in development and will be released soon with improved features and design.</p>
+            </li>
+          </ul>
+        </div>
 
-      <div className="timeline-section">
-        <h2>Prototype Timeline</h2>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          <li style={{ marginBottom: '2rem' }}>
-            <strong>May: 1st Prototype</strong>
-            <div>
-              <img src="/Prototype_1st.jpg" alt="1st Prototype" style={{ maxWidth: '200px', marginTop: '0.5rem', borderRadius: '6px' }} />
-            </div>
-            <p>Initial working prototype, featuring core hardware and basic functionality. Completed in May.</p>
-          </li>
-          <li>
-            <strong>Second Iteration</strong>
-            <div style={{ marginTop: '0.5rem', width: '200px', height: '150px', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', color: '#888' }}>
-              Being completed soon!
-            </div>
-            <p>The next iteration is currently in development and will be released soon with improved features and design.</p>
-          </li>
-        </ul>
+        <div className="product-feature-section">
+          <img className="product-feature-image" src="/Prototype_1st.jpg" alt="1st Prototype" />
+          <div className="product-feature-content">
+            <h2>Featured Product: Aeroband Prototype</h2>
+            <p>
+              This is the first prototype of our Aeroband project, designed to bring innovative technology to your fingertips. Stay tuned for more updates as we continue to improve and develop our product!
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   )
