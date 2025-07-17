@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLE Debug Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .status.connected {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.disconnected {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .status.connecting {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BLE Debug Tool</h1>
+        <p>This tool helps debug BLE connectivity issues with ESP32 devices.</p>
+        
+        <div id="status" class="status disconnected">
+            Status: Disconnected
+        </div>
+        
+        <button id="connectBtn">Connect to ESP32</button>
+        <button id="disconnectBtn" disabled>Disconnect</button>
+        <button id="clearLog">Clear Log</button>
+        
+        <h3>Connection Log:</h3>
+        <div id="log" class="log"></div>
+        
+        <h3>Received Data:</h3>
+        <div id="dataLog" class="log"></div>
+    </div>
+
+    <script>
+        class BLEDebugger {
+            constructor() {
+                this.device = null;
+                this.server = null;
+                this.service = null;
+                this.characteristic = null;
+                this.isConnected = false;
+                
+                this.setupEventListeners();
+                this.log('BLE Debugger initialized');
+            }
+            
+            setupEventListeners() {
+                document.getElementById('connectBtn').addEventListener('click', () => {
+                    this.connect();
+                });
+                
+                document.getElementById('disconnectBtn').addEventListener('click', () => {
+                    this.disconnect();
+                });
+                
+                document.getElementById('clearLog').addEventListener('click', () => {
+                    this.clearLog();
+                });
+            }
+            
+            log(message) {
+                const logElement = document.getElementById('log');
+                const timestamp = new Date().toLocaleTimeString();
+                logElement.innerHTML += `[${timestamp}] ${message}\n`;
+                logElement.scrollTop = logElement.scrollHeight;
+                console.log(message);
+            }
+            
+            logData(data) {
+                const dataLogElement = document.getElementById('dataLog');
+                const timestamp = new Date().toLocaleTimeString();
+                dataLogElement.innerHTML += `[${timestamp}] ${JSON.stringify(data, null, 2)}\n`;
+                dataLogElement.scrollTop = dataLogElement.scrollHeight;
+            }
+            
+            clearLog() {
+                document.getElementById('log').innerHTML = '';
+                document.getElementById('dataLog').innerHTML = '';
+            }
+            
+            updateStatus(status, message) {
+                const statusElement = document.getElementById('status');
+                statusElement.className = `status ${status}`;
+                statusElement.textContent = `Status: ${message}`;
+            }
+            
+            async connect() {
+                try {
+                    this.log('Starting BLE connection...');
+                    this.updateStatus('connecting', 'Connecting...');
+                    
+                    // Check if Bluetooth is available
+                    if (!navigator.bluetooth) {
+                        throw new Error('Bluetooth not supported in this browser');
+                    }
+                    
+                    this.log('Bluetooth API available');
+                    
+                    // Request device
+                    this.device = await navigator.bluetooth.requestDevice({
+                        filters: [
+                            { namePrefix: 'AerobandSensor' },  // Arduino R4
+                            { namePrefix: 'Aeroband' },
+                            { namePrefix: 'ESP32' },
+                            { services: ['19b10000-e8f2-537e-4f6c-d104768a1214'] },  // Arduino R4 (lowercase)
+                            { services: ['4fafc201-1fb5-459e-8fcc-c5c9c331914b'] }   // ESP32
+                        ],
+                        optionalServices: [
+                            '19b10000-e8f2-537e-4f6c-d104768a1214',  // Arduino R4 (lowercase)
+                            '4fafc201-1fb5-459e-8fcc-c5c9c331914b'   // ESP32
+                        ]
+                    });
+                    
+                    this.log(`Device selected: ${this.device.name}`);
+                    
+                    // Connect to GATT server
+                    this.log('Connecting to GATT server...');
+                    this.server = await this.device.gatt.connect();
+                    this.log('GATT server connected');
+                    
+                    // Get service
+                    this.log('Getting service...');
+                    try {
+                        this.service = await this.server.getPrimaryService('19b10000-e8f2-537e-4f6c-d104768a1214'); // Arduino R4 (lowercase)
+                        this.log('Arduino R4 service found');
+                    } catch (error) {
+                        try {
+                            this.service = await this.server.getPrimaryService('4fafc201-1fb5-459e-8fcc-c5c9c331914b'); // ESP32
+                            this.log('ESP32 service found');
+                        } catch (error2) {
+                            this.log('No known service found, trying first available...');
+                            const services = await this.server.getPrimaryServices();
+                            if (services.length > 0) {
+                                this.service = services[0];
+                                this.log(`Using service: ${this.service.uuid}`);
+                            } else {
+                                throw new Error('No services found');
+                            }
+                        }
+                    }
+                    
+                    // Get characteristic
+                    this.log('Getting characteristic...');
+                    try {
+                        this.characteristic = await this.service.getCharacteristic('19b10001-e8f2-537e-4f6c-d104768a1214'); // Arduino R4 (lowercase)
+                        this.log('Arduino R4 characteristic found');
+                    } catch (error) {
+                        try {
+                            this.characteristic = await this.service.getCharacteristic('beb5483e-36e1-4688-b7f5-ea07361b26a8'); // ESP32
+                            this.log('ESP32 characteristic found');
+                        } catch (error2) {
+                            this.log('No known characteristic found, trying first available...');
+                            const characteristics = await this.service.getCharacteristics();
+                            if (characteristics.length > 0) {
+                                this.characteristic = characteristics[0];
+                                this.log(`Using characteristic: ${this.characteristic.uuid}`);
+                            } else {
+                                throw new Error('No characteristics found');
+                            }
+                        }
+                    }
+                    
+                    // Start notifications
+                    this.log('Starting notifications...');
+                    await this.characteristic.startNotifications();
+                    this.characteristic.addEventListener('characteristicvaluechanged', (event) => {
+                        this.handleDataReceived(event);
+                    });
+                    
+                    this.isConnected = true;
+                    this.updateStatus('connected', 'Connected');
+                    this.log('BLE connection established successfully');
+                    
+                    // Update button states
+                    document.getElementById('connectBtn').disabled = true;
+                    document.getElementById('disconnectBtn').disabled = false;
+                    
+                } catch (error) {
+                    this.log(`Connection error: ${error.message}`);
+                    this.updateStatus('disconnected', 'Connection failed');
+                    console.error('BLE connection error:', error);
+                }
+            }
+            
+            handleDataReceived(event) {
+                const target = event.target;
+                const value = target.value;
+                
+                if (!value) {
+                    this.log('No data received');
+                    return;
+                }
+                
+                try {
+                    const decoder = new TextDecoder('utf-8');
+                    const dataString = decoder.decode(value);
+                    
+                    this.log(`Received data: ${dataString}`);
+                    
+                    // Try to parse as JSON
+                    try {
+                        const jsonData = JSON.parse(dataString);
+                        this.log('Successfully parsed JSON data');
+                        
+                        // Handle both full format and compact format
+                        let sensorData;
+                        
+                        if (jsonData.temperature !== undefined || jsonData.t !== undefined) {
+                            // Full format (ESP32) or compact format (Arduino R4)
+                            sensorData = {
+                                temperature: jsonData.temperature || jsonData.t || 0,
+                                humidity: jsonData.humidity || jsonData.h || 0,
+                                pressure: jsonData.pressure || jsonData.p || 0,
+                                altitude: jsonData.altitude || jsonData.a || 0,
+                                airQuality: jsonData.airQuality || jsonData.q || 0,
+                                timestamp: jsonData.timestamp || jsonData.ts || Date.now()
+                            };
+                        } else {
+                            // Unknown format
+                            sensorData = jsonData;
+                        }
+                        
+                        this.logData(sensorData);
+                        this.log('Processed sensor data successfully');
+                    } catch (jsonError) {
+                        this.log(`JSON parsing failed: ${jsonError.message}`);
+                    }
+                    
+                } catch (error) {
+                    this.log(`Error parsing data: ${error.message}`);
+                }
+            }
+            
+            async disconnect() {
+                try {
+                    this.log('Disconnecting...');
+                    
+                    if (this.characteristic) {
+                        await this.characteristic.stopNotifications();
+                    }
+                    
+                    if (this.device?.gatt?.connected) {
+                        await this.device.gatt.disconnect();
+                    }
+                    
+                    this.device = null;
+                    this.server = null;
+                    this.service = null;
+                    this.characteristic = null;
+                    this.isConnected = false;
+                    
+                    this.updateStatus('disconnected', 'Disconnected');
+                    this.log('BLE disconnected');
+                    
+                    // Update button states
+                    document.getElementById('connectBtn').disabled = false;
+                    document.getElementById('disconnectBtn').disabled = true;
+                    
+                } catch (error) {
+                    this.log(`Disconnect error: ${error.message}`);
+                }
+            }
+        }
+        
+        // Initialize the debugger
+        const debugger = new BLEDebugger();
+    </script>
+</body>
+</html> 

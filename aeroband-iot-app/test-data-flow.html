@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Flow Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 10px;
+            height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .data-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .data-item {
+            background: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .data-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+        .data-label {
+            font-size: 12px;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Data Flow Test</h1>
+        <p>This page tests the data flow from BLE to dashboard display.</p>
+        
+        <div class="test-section">
+            <h3>1. Simulate BLE Data Reception</h3>
+            <button id="simulateData">Simulate Sensor Data</button>
+            <button id="simulateConnection">Simulate Connection</button>
+            <button id="simulateDisconnection">Simulate Disconnection</button>
+            
+            <div class="log" id="simulationLog"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>2. Dashboard Display Test</h3>
+            <div class="data-display">
+                <div class="data-item">
+                    <div class="data-value" id="test-temperature">--</div>
+                    <div class="data-label">Temperature (°C)</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-value" id="test-humidity">--</div>
+                    <div class="data-label">Humidity (%)</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-value" id="test-air-quality">--</div>
+                    <div class="data-label">Air Quality (ppm)</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-value" id="test-pressure">--</div>
+                    <div class="data-label">Pressure (hPa)</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3>3. Data Processing Test</h3>
+            <button id="testJsonParsing">Test JSON Parsing</button>
+            <button id="testDataCallback">Test Data Callback</button>
+            
+            <div class="log" id="processingLog"></div>
+        </div>
+    </div>
+
+    <script>
+        class DataFlowTester {
+            constructor() {
+                this.isConnected = false;
+                this.dataCallback = null;
+                this.setupEventListeners();
+            }
+            
+            setupEventListeners() {
+                document.getElementById('simulateData').addEventListener('click', () => {
+                    this.simulateSensorData();
+                });
+                
+                document.getElementById('simulateConnection').addEventListener('click', () => {
+                    this.simulateConnection();
+                });
+                
+                document.getElementById('simulateDisconnection').addEventListener('click', () => {
+                    this.simulateDisconnection();
+                });
+                
+                document.getElementById('testJsonParsing').addEventListener('click', () => {
+                    this.testJsonParsing();
+                });
+                
+                document.getElementById('testDataCallback').addEventListener('click', () => {
+                    this.testDataCallback();
+                });
+            }
+            
+            log(message, logId = 'simulationLog') {
+                const logElement = document.getElementById(logId);
+                const timestamp = new Date().toLocaleTimeString();
+                logElement.innerHTML += `[${timestamp}] ${message}\n`;
+                logElement.scrollTop = logElement.scrollHeight;
+                console.log(message);
+            }
+            
+            simulateConnection() {
+                this.isConnected = true;
+                this.log('Simulating BLE connection...');
+                this.log('Connection established successfully');
+                this.log('Setting up data callback...');
+                
+                // Simulate the data callback setup
+                this.dataCallback = (data) => {
+                    this.log('Data callback received: ' + JSON.stringify(data));
+                    this.updateDisplay(data);
+                };
+                
+                this.log('Data callback registered successfully');
+            }
+            
+            simulateDisconnection() {
+                this.isConnected = false;
+                this.dataCallback = null;
+                this.log('Simulating BLE disconnection...');
+                this.log('Connection terminated');
+            }
+            
+            simulateSensorData() {
+                if (!this.isConnected) {
+                    this.log('ERROR: Not connected. Please connect first.');
+                    return;
+                }
+                
+                // Simulate the JSON data that ESP32 sends
+                const sensorData = {
+                    temperature: 22.5 + (Math.random() - 0.5) * 4,
+                    humidity: 45.0 + (Math.random() - 0.5) * 20,
+                    pressure: 1013.25 + (Math.random() - 0.5) * 10,
+                    altitude: 100.0 + (Math.random() - 0.5) * 40,
+                    airQuality: 400 + (Math.random() - 0.5) * 100,
+                    timestamp: Date.now()
+                };
+                
+                this.log('Simulating sensor data: ' + JSON.stringify(sensorData));
+                
+                // Simulate the data reception process
+                if (this.dataCallback) {
+                    this.log('Calling data callback...');
+                    this.dataCallback(sensorData);
+                } else {
+                    this.log('ERROR: No data callback registered');
+                }
+            }
+            
+            updateDisplay(data) {
+                this.log('Updating display with sensor data...');
+                
+                document.getElementById('test-temperature').textContent = data.temperature.toFixed(1);
+                document.getElementById('test-humidity').textContent = data.humidity.toFixed(1);
+                document.getElementById('test-air-quality').textContent = data.airQuality.toFixed(0);
+                document.getElementById('test-pressure').textContent = data.pressure.toFixed(1);
+                
+                this.log('Display updated successfully');
+            }
+            
+            testJsonParsing() {
+                this.log('Testing JSON parsing...', 'processingLog');
+                
+                // Test the full JSON format that ESP32 sends
+                const testJsonFull = '{"temperature":22.5,"humidity":45.0,"pressure":1013.25,"altitude":100.0,"airQuality":400,"timestamp":123456789}';
+                
+                // Test the compact JSON format that Arduino R4 sends
+                const testJsonCompact = '{"t":22.5,"h":45.0,"p":1013.25,"a":100.0,"q":400,"ts":123456789}';
+                
+                try {
+                    const parsedFull = JSON.parse(testJsonFull);
+                    this.log('Full JSON parsing successful: ' + JSON.stringify(parsedFull, null, 2), 'processingLog');
+                    
+                    const parsedCompact = JSON.parse(testJsonCompact);
+                    this.log('Compact JSON parsing successful: ' + JSON.stringify(parsedCompact, null, 2), 'processingLog');
+                    
+                    // Test the data processing
+                    const sensorDataFull = {
+                        temperature: parsedFull.temperature || parsedFull.t || 0,
+                        humidity: parsedFull.humidity || parsedFull.h || 0,
+                        pressure: parsedFull.pressure || parsedFull.p || 0,
+                        altitude: parsedFull.altitude || parsedFull.a || 0,
+                        airQuality: parsedFull.airQuality || parsedFull.q || 0,
+                        timestamp: parsedFull.timestamp || parsedFull.ts || Date.now()
+                    };
+                    
+                    const sensorDataCompact = {
+                        temperature: parsedCompact.temperature || parsedCompact.t || 0,
+                        humidity: parsedCompact.humidity || parsedCompact.h || 0,
+                        pressure: parsedCompact.pressure || parsedCompact.p || 0,
+                        altitude: parsedCompact.altitude || parsedCompact.a || 0,
+                        airQuality: parsedCompact.airQuality || parsedCompact.q || 0,
+                        timestamp: parsedCompact.timestamp || parsedCompact.ts || Date.now()
+                    };
+                    
+                    this.log('Processed full format: ' + JSON.stringify(sensorDataFull, null, 2), 'processingLog');
+                    this.log('Processed compact format: ' + JSON.stringify(sensorDataCompact, null, 2), 'processingLog');
+                    
+                } catch (error) {
+                    this.log('JSON parsing failed: ' + error.message, 'processingLog');
+                }
+            }
+            
+            testDataCallback() {
+                this.log('Testing data callback registration...', 'processingLog');
+                
+                // Simulate the callback registration process
+                const testCallback = (data) => {
+                    this.log('Test callback executed with data: ' + JSON.stringify(data), 'processingLog');
+                };
+                
+                this.log('Data callback registered successfully', 'processingLog');
+                
+                // Test the callback
+                const testData = {
+                    temperature: 25.0,
+                    humidity: 50.0,
+                    pressure: 1013.0,
+                    airQuality: 450,
+                    timestamp: Date.now()
+                };
+                
+                this.log('Calling test callback...', 'processingLog');
+                testCallback(testData);
+            }
+        }
+        
+        // Initialize the tester
+        const tester = new DataFlowTester();
+    </script>
+</body>
+</html> 
