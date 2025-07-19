@@ -77,7 +77,7 @@ const About = () => {
                   </div>
                 </div>
                 <h3>Vince Vinas</h3>
-                <div className="team-role">Project Head & Founder</div>
+                <div className="team-role">Project Head & Co-Founder</div>
                 <p className="team-bio">
                   Leading strategic direction and project management for Aeroband's environmental monitoring initiatives.
                 </p>
@@ -92,7 +92,7 @@ const About = () => {
                   </div>
                 </div>
                 <h3>Skhart Aye Mercado</h3>
-                <div className="team-role">Lead Developer & Founder</div>
+                <div className="team-role">Lead Developer & Co-Founder</div>
                 <p className="team-bio">
                   Leading the technical development of Aeroband's IoT platform and sensor integration systems.
                 </p>
@@ -109,7 +109,7 @@ const About = () => {
                   </div>
                 </div>
                 <h3>Paolo Barrado</h3>
-                <div className="team-role">Lead Hardware Developer & Founder</div>
+                <div className="team-role">Lead Hardware Developer & Co-Founder</div>
                 <p className="team-bio">
                   Designing and developing the physical sensor hardware and IoT device architecture for Aeroband.
                 </p>
@@ -124,7 +124,7 @@ const About = () => {
                   </div>
                 </div>
                 <h3>John Paul Pascual</h3>
-                <div className="team-role">Lead Specialist & Founder</div>
+                <div className="team-role">Lead Specialist & Co-Founder</div>
                 <p className="team-bio">
                   Providing specialized expertise in environmental monitoring and IoT system optimization for Aeroband.
                 </p>
@@ -139,7 +139,7 @@ const About = () => {
                   </div>
                 </div>
                 <h3>Clarizza Reyes</h3>
-                <div className="team-role">Analyst & Founder</div>
+                <div className="team-role">Analyst & Co-Founder</div>
                 <p className="team-bio">
                   Conducting data analysis and research to optimize Aeroband's air quality monitoring algorithms.
                 </p>
