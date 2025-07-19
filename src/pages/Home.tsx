@@ -136,18 +136,18 @@ const Home = () => {
                 </div>
               </div>
               <h3>Health Protection</h3>
-              <p>Monitor indoor and outdoor air quality to protect sensitive individuals and maintain healthy environments.</p>
+              <p>Proactive monitoring to ensure safe air quality levels and protect against harmful pollutants and allergens.</p>
             </div>
             <div className="feature-card card">
               <div className="feature-icon">
                 <div className="icon-bg">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
                   </svg>
                 </div>
               </div>
-              <h3>Research & Analytics</h3>
-              <p>Advanced analytics and historical data for research, compliance, and environmental impact assessment.</p>
+              <h3>Data Analytics</h3>
+              <p>Advanced analytics and insights to understand air quality trends and make informed decisions.</p>
             </div>
           </div>
         </div>
