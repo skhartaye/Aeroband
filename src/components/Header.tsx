@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import './Header.css'
-import aerobandLogo from '../../aeroband_logo.png'
 
 interface HeaderProps {
   isMenuOpen: boolean
@@ -8,45 +7,46 @@ interface HeaderProps {
 }
 
 const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
-  const handleAppClick = () => {
-    setIsMenuOpen(false)
-    alert('Coming Soon!')
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
   }
 
   return (
     <header className="header">
-      <div className="header-container">
-        <Link to="/" className="logo" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
-          <img src={aerobandLogo} alt="Aeroband Logo" style={{ height: '96px', width: '96px', objectFit: 'contain', borderRadius: '8px' }} />
-          <h1 style={{ margin: 0, fontSize: '1.7rem', color: 'inherit' }}>Aeroband.org</h1>
-        </Link>
-        <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
+      <div className="container">
+        <div className="header-content">
+          <Link to="/" className="logo">
+            <div className="logo-icon">
+              <div className="hexagon-logo"></div>
+            </div>
+            <span className="logo-text">Aeroband</span>
+          </Link>
+
+          <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
+            <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+              Home
+            </Link>
+            <Link to="/about" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+              About
+            </Link>
+            <Link to="/contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+              Contact
+            </Link>
+            <button className="btn btn-primary nav-cta">
+              View Dashboard
+            </button>
+          </nav>
+
           <button 
-            className="nav-link coming-soon" 
-            onClick={handleAppClick}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', font: 'inherit' }}
+            className={`hamburger ${isMenuOpen ? 'hamburger-open' : ''}`}
+            onClick={toggleMenu}
+            aria-label="Toggle menu"
           >
-            App
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
-          <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-            Home
-          </Link>
-          <Link to="/about" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-            About
-          </Link>
-          <Link to="/contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-            Contact
-          </Link>
-        </nav>
-        <button 
-          className={`hamburger ${isMenuOpen ? 'hamburger-open' : ''}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        </div>
       </div>
     </header>
   )

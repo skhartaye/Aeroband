@@ -1,92 +1,458 @@
+/* Web3 About Page Styles */
+
 .about {
   min-height: 100vh;
 }
 
+/* About Hero Section */
 .about-hero {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
+}
+
+.about-hero-content {
   text-align: center;
-  padding: 4rem 0;
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
 }
 
-.about-content {
-  padding: 4rem 0;
-  background: var(--secondary-color);
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 4rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.about-text h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
+.about-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 24px;
   color: var(--text-primary);
 }
 
-.about-text p {
-  font-size: 1.1rem;
-  line-height: 1.8;
+.about-subtitle {
+  font-size: 1.3rem;
   color: var(--text-secondary);
-  margin-bottom: 2rem;
+  line-height: 1.6;
 }
 
-.about-stats {
+/* Mission Section */
+.mission-section {
+  background: var(--background-light);
+}
+
+.mission-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.mission-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.mission-values {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 24px;
 }
 
-.stat-card {
-  background: white;
-  padding: 2rem;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+.value-item {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.value-item:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--glow-primary);
+}
+
+.value-item h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.value-item p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* IoT Visual */
+.mission-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.iot-visual {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+.device {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: var(--gradient-primary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: var(--glow-primary);
+}
+
+.device-1 {
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.device-2 {
+  top: 120px;
+  left: 20px;
+  animation-delay: 0.5s;
+}
+
+.device-3 {
+  top: 120px;
+  right: 20px;
+  animation-delay: 1s;
+}
+
+.data-stream {
+  position: absolute;
+  background: var(--gradient-primary);
+  height: 2px;
+  animation: flow 3s ease-in-out infinite;
+}
+
+.data-1 {
+  top: 50px;
+  left: 50%;
+  width: 80px;
+  transform: translateX(-50%) rotate(-45deg);
+  transform-origin: center;
+}
+
+.data-2 {
+  top: 50px;
+  right: 50%;
+  width: 80px;
+  transform: translateX(50%) rotate(45deg);
+  transform-origin: center;
+}
+
+.data-3 {
+  bottom: 50px;
+  left: 50%;
+  width: 80px;
+  transform: translateX(-50%);
+}
+
+@keyframes flow {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Team Section */
+.team-section {
+  background: var(--background-dark);
+}
+
+.team-grid {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.team-top-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.team-bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.team-card {
   text-align: center;
-  transition: var(--transition);
+  padding: 40px 24px;
 }
 
-.stat-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+.team-avatar {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
 }
 
-.stat-card h3 {
-  font-size: 2.5rem;
+.avatar-bg {
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 32px;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover .avatar-bg {
+  transform: scale(1.1);
+  box-shadow: var(--glow-primary);
+}
+
+.team-card h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.team-role {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.team-bio {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Technology Section */
+.tech-section {
+  background: var(--background-light);
+}
+
+.tech-grid {
+  margin-top: 60px;
+}
+
+.tech-card {
+  text-align: center;
+  padding: 32px 20px;
+}
+
+.tech-icon {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.tech-card h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.tech-card p {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+/* Roadmap Section */
+.roadmap-section {
+  background: var(--background-dark);
+}
+
+.roadmap {
+  margin-top: 60px;
+  position: relative;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.roadmap::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--gradient-primary);
+}
+
+.roadmap-item {
+  position: relative;
+  margin-bottom: 60px;
+  padding-left: 60px;
+}
+
+.roadmap-item:last-child {
+  margin-bottom: 0;
+}
+
+.roadmap-dot {
+  position: absolute;
+  left: 11px;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  border: 4px solid var(--background-dark);
+  box-shadow: var(--glow-primary);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.roadmap-content {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.roadmap-content:hover {
+  border-color: var(--primary-color);
+  transform: translateX(8px);
+  box-shadow: var(--glow-primary);
+}
+
+.roadmap-content h3 {
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--primary-color);
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 }
 
-.stat-card p {
-  font-size: 1.1rem;
+.roadmap-content h4 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.roadmap-content p {
   color: var(--text-secondary);
-  font-weight: 500;
+  line-height: 1.6;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
-  .about-grid {
+  .about-title {
+    font-size: 2.5rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .mission-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 40px;
   }
 
-  .about-text h2 {
-    font-size: 1.75rem;
+  .iot-visual {
+    width: 250px;
+    height: 250px;
   }
 
-  .about-text p {
-    font-size: 1rem;
+  .device {
+    width: 50px;
+    height: 50px;
+    font-size: 10px;
   }
 
-  .stat-card h3 {
+  .team-top-row {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 400px;
+  }
+
+  .team-bottom-row {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 400px;
+  }
+
+  .roadmap::before {
+    left: 15px;
+  }
+
+  .roadmap-item {
+    padding-left: 50px;
+  }
+
+  .roadmap-dot {
+    left: 6px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title {
     font-size: 2rem;
   }
-} 
+
+  .team-grid {
+    gap: 40px;
+  }
+
+  .team-card {
+    padding: 30px 20px;
+  }
+
+  .roadmap-content {
+    padding: 20px;
+  }
+}
+
+/* Animation Classes */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.8s ease-out;
+}
+
+/* Stagger animations for grid items */
+.team-card:nth-child(1) { animation-delay: 0.1s; }
+.team-card:nth-child(2) { animation-delay: 0.2s; }
+.team-card:nth-child(3) { animation-delay: 0.3s; }
+
+.tech-card:nth-child(1) { animation-delay: 0.1s; }
+.tech-card:nth-child(2) { animation-delay: 0.2s; }
+.tech-card:nth-child(3) { animation-delay: 0.3s; }
+.tech-card:nth-child(4) { animation-delay: 0.4s; }
+
+.roadmap-item:nth-child(1) { animation-delay: 0.1s; }
+.roadmap-item:nth-child(2) { animation-delay: 0.2s; }
+.roadmap-item:nth-child(3) { animation-delay: 0.3s; }
+.roadmap-item:nth-child(4) { animation-delay: 0.4s; } 

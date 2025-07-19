@@ -1,125 +1,296 @@
-import './Home.css'
 import { useRef } from 'react'
-import prototype1st from '../../prototype_1st.jpg'
+import './Home.css'
 
 const Home = () => {
   const featuresRef = useRef<HTMLDivElement>(null)
+  const sensorsRef = useRef<HTMLDivElement>(null)
 
-  const handleLearnMore = () => {
+  const handleExploreFeatures = () => {
     featuresRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const handleGetStarted = () => {
-    alert('Coming soon!')
+  const handleExploreSensors = () => {
+    sensorsRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const handleViewDashboard = () => {
+    alert('Aeroband Dashboard Coming Soon!')
   }
 
   return (
-    <div className="home fade-in">
-      <section className="hero fade-in">
-        <div className="hero-content fade-in" style={{ animationDelay: '0.2s' }}>
-          <h1 className="hero-title fade-in" style={{ animationDelay: '0.4s' }}>
-            Welcome to <span className="highlight">Aeroband.org</span>
-          </h1>
-          <p className="hero-subtitle fade-in" style={{ animationDelay: '0.6s' }}>
-            IoT-powered Air Quality Monitoring for a Safer, Healthier Environment
+    <div className="home">
+      {/* Hero Section */}
+      <section className="hero section">
+        <div className="container">
+          <div className="hero-content">
+            <div className="hero-text">
+              <h1 className="hero-title">
+                Welcome to <span className="text-gradient">Aeroband</span>
+              </h1>
+              <p className="hero-subtitle">
+                Advanced IoT air quality monitoring system that collects comprehensive environmental data 
+                including humidity, temperature, pressure, VOC levels, and particulate matter for a healthier environment.
+              </p>
+              <div className="hero-buttons">
+                <button className="btn btn-primary" onClick={handleViewDashboard}>
+                  View Dashboard
+                </button>
+                <button className="btn btn-secondary" onClick={handleExploreFeatures}>
+                  Learn More
+                </button>
+              </div>
+            </div>
+            <div className="hero-visual">
+              <div className="sensor-animation">
+                <div className="sensor sensor-1">
+                  <div className="sensor-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M14 14.76V3.5a2.5 2.5 0 0 1 5 0v11.26a4.5 4.5 0 1 1-5 0z"/>
+                      <path d="M9 12h1"/>
+                      <path d="M9 16h1"/>
+                      <path d="M9 20h1"/>
+                      <path d="M14.5 4v2.5a2.5 2.5 0 0 1-5 0V4"/>
+                    </svg>
+                  </div>
+                  <span>Temp</span>
+                </div>
+                <div className="sensor sensor-2">
+                  <div className="sensor-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 3a6 6 0 0 0-6 6v7a6 6 0 0 0 12 0V9a6 6 0 0 0-6-6Z"/>
+                      <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                      <path d="M12 12v6"/>
+                      <path d="M8 12h8"/>
+                    </svg>
+                  </div>
+                  <span>Humidity</span>
+                </div>
+                <div className="sensor sensor-3">
+                  <div className="sensor-icon">📊</div>
+                  <span>Pressure</span>
+                </div>
+                <div className="sensor sensor-4">
+                  <div className="sensor-icon">☁️</div>
+                  <span>VOC</span>
+                </div>
+                <div className="sensor sensor-5">
+                  <div className="sensor-icon">🌫️</div>
+                  <span>PM2.5</span>
+                </div>
+                <div className="data-flow"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="stats-section section">
+        <div className="container">
+          <div className="stats-grid">
+            <div className="stat-card">
+              <div className="stat-number">24/7</div>
+              <div className="stat-label">Real-time Monitoring</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">5</div>
+              <div className="stat-label">Sensor Types</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">99.9%</div>
+              <div className="stat-label">Accuracy</div>
+            </div>
+            <div className="stat-card">
+              <div className="stat-number">1000+</div>
+              <div className="stat-label">Data Points/Day</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="features-section section" ref={featuresRef}>
+        <div className="container">
+          <h2 className="section-title">Why Monitor Air Quality?</h2>
+          <p className="section-subtitle">
+            Comprehensive environmental monitoring for health, safety, and research
           </p>
-          <div className="hero-buttons fade-in" style={{ animationDelay: '0.8s' }}>
-            <button className="btn btn-primary" onClick={handleGetStarted}>Get Started</button>
-            <button className="btn btn-secondary" onClick={handleLearnMore}>Learn More</button>
-          </div>
-        </div>
-        <div className="hero-visual fade-in" style={{ animationDelay: '1s' }}>
-          <div className="hero-graphic">
-            <div className="floating-card card-1"></div>
-            <div className="floating-card card-2"></div>
-            <div className="floating-card card-3"></div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mission-section fade-in" style={{ animationDelay: '1.1s' }}>
-        <h2 className="section-title">Our Mission & Vision</h2>
-        <p className="mission-lead">We aim to help everyone become more aware of the air we breathe—empowering people to make safer, healthier choices for themselves and their communities.</p>
-        <ul className="mission-beneficiaries">
-          <li><strong>Patients & Sensitive Individuals:</strong> Real-time alerts and data for those most at risk from poor air quality.</li>
-          <li><strong>Researchers:</strong> Access to reliable, actionable air quality data for studies and innovation.</li>
-          <li><strong>Governments & Policy Makers:</strong> Tools and insights to inform public health decisions and create safer environments.</li>
-        </ul>
-        <p className="mission-summary">Together, we can build a world where everyone is informed and protected from the dangers of air pollution—at home, at work, and in public spaces.</p>
-      </section>
-
-      <section className="features fade-in" style={{ animationDelay: '1.2s' }} ref={featuresRef}>
-        <h2 className="section-title">Why Monitor Air Quality?</h2>
-        <div className="features-grid">
-          <div className="feature-card">
-            <div className="feature-icon">🌬️</div>
-            <h3>Real-Time Monitoring</h3>
-            <p>Track air quality instantly with IoT sensors for peace of mind and proactive health protection.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">🛡️</div>
-            <h3>Safe Environments</h3>
-            <p>Ensure your home, office, or public space maintains safe, breathable air for everyone.</p>
-          </div>
-          <div className="feature-card">
-            <div className="feature-icon">📊</div>
-            <h3>Data-Driven Insights</h3>
-            <p>Access historical and live data to make informed decisions about your environment.</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="services fade-in" style={{ animationDelay: '1.4s' }}>
-        <h2 className="section-title">Our IoT Solutions</h2>
-        <div className="services-grid">
-          <div className="service-card">
-            <h3>Air Quality Sensors</h3>
-            <p>Deploy advanced IoT sensors to monitor pollutants, humidity, and temperature in real time.</p>
-          </div>
-          <div className="service-card">
-            <h3>Smart Alerts</h3>
-            <p>Receive instant notifications when air quality drops below safe thresholds.</p>
-          </div>
-          <div className="service-card">
-            <h3>Analytics Dashboard</h3>
-            <p>Visualize trends and get actionable recommendations for improving air quality.</p>
-          </div>
-        </div>
-      </section>
-
-      <div className="product-timeline-row">
-        <div className="timeline-section">
-          <h2>Prototype Timeline</h2>
-          <ul className="timeline-list">
-            <li className="timeline-item">
-              <span className="timeline-dot"></span>
-              <strong>May: 1st Prototype</strong>
-              <div>
-                <img src={prototype1st} alt="1st Prototype" style={{ maxWidth: '200px', marginTop: '0.5rem', borderRadius: '6px' }} />
+          <div className="features-grid grid grid-3">
+            <div className="feature-card card">
+              <div className="feature-icon">
+                <div className="icon-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                  </svg>
+                </div>
               </div>
-              <p>Initial working prototype, featuring core hardware and basic functionality. Completed in May.</p>
-            </li>
-            <li className="timeline-item">
-              <span className="timeline-dot"></span>
-              <strong>Second Iteration</strong>
-              <div style={{ marginTop: '0.5rem', width: '200px', height: '150px', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '6px', color: '#888' }}>
-                Coming soon!
+              <h3>Real-Time Data</h3>
+              <p>Continuous monitoring of air quality parameters with instant alerts and notifications for immediate response.</p>
+            </div>
+            <div className="feature-card card">
+              <div className="feature-icon">
+                <div className="icon-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
               </div>
-              <p>The next iteration is currently in development and will be released soon with improved features and design.</p>
-            </li>
-          </ul>
+              <h3>Health Protection</h3>
+              <p>Monitor indoor and outdoor air quality to protect sensitive individuals and maintain healthy environments.</p>
+            </div>
+            <div className="feature-card card">
+              <div className="feature-icon">
+                <div className="icon-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                  </svg>
+                </div>
+              </div>
+              <h3>Research & Analytics</h3>
+              <p>Advanced analytics and historical data for research, compliance, and environmental impact assessment.</p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="product-feature-section">
-          <img className="product-feature-image" src={prototype1st} alt="1st Prototype" />
-          <div className="product-feature-content">
-            <h2>Featured Product: Aeroband Prototype</h2>
-            <p>
-              This is the first prototype of our Aeroband project, designed to bring innovative technology to your fingertips. Stay tuned for more updates as we continue to improve and develop our product!
+      {/* Sensors Section */}
+      <section className="sensors-section section" ref={sensorsRef}>
+        <div className="container">
+          <h2 className="section-title">Our Sensor Technology</h2>
+          <p className="section-subtitle">
+            State-of-the-art IoT sensors for comprehensive environmental monitoring
+          </p>
+          <div className="sensors-grid">
+            <div className="sensor-card card" data-card-number="1">
+              <div className="sensor-icon">
+                <div className="icon-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M14 14.76V3.5a2.5 2.5 0 0 1 5 0v11.26a4.5 4.5 0 1 1-5 0z"/>
+                    <path d="M9 12h1"/>
+                    <path d="M9 16h1"/>
+                    <path d="M9 20h1"/>
+                    <path d="M14.5 4v2.5a2.5 2.5 0 0 1-5 0V4"/>
+                  </svg>
+                </div>
+              </div>
+              <h3>Temperature Sensor</h3>
+              <p>High-precision temperature monitoring with ±0.5°C accuracy. Tracks ambient temperature variations for climate control and comfort assessment.</p>
+              <div className="sensor-specs">
+                <span>Range: -40°C to +85°C</span>
+                <span>Accuracy: ±0.5°C</span>
+              </div>
+            </div>
+            <div className="sensor-card card" data-card-number="2">
+              <div className="sensor-icon">
+                <div className="icon-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 3a6 6 0 0 0-6 6v7a6 6 0 0 0 12 0V9a6 6 0 0 0-6-6Z"/>
+                    <path d="M12 12a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                    <path d="M12 12v6"/>
+                    <path d="M8 12h8"/>
+                  </svg>
+                </div>
+              </div>
+              <h3>Humidity Sensor</h3>
+              <p>Relative humidity monitoring with capacitive sensing technology. Essential for comfort, health, and equipment protection.</p>
+              <div className="sensor-specs">
+                <span>Range: 0-100% RH</span>
+                <span>Accuracy: ±2% RH</span>
+              </div>
+            </div>
+            <div className="sensor-card card" data-card-number="3">
+              <div className="sensor-icon">
+                <div className="icon-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                  </svg>
+                </div>
+              </div>
+              <h3>Barometric Pressure</h3>
+              <p>Atmospheric pressure monitoring for weather prediction and altitude calculations. High-resolution pressure sensing.</p>
+              <div className="sensor-specs">
+                <span>Range: 300-1100 hPa</span>
+                <span>Accuracy: ±1 hPa</span>
+              </div>
+            </div>
+            <div className="sensor-card card" data-card-number="4">
+              <div className="sensor-icon">
+                <div className="icon-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  </svg>
+                </div>
+              </div>
+              <h3>VOC Sensor</h3>
+              <p>Volatile Organic Compounds detection for indoor air quality assessment. Monitors harmful chemical emissions.</p>
+              <div className="sensor-specs">
+                <span>Range: 0-1000 ppm</span>
+                <span>Accuracy: ±5%</span>
+              </div>
+            </div>
+            <div className="sensor-card card" data-card-number="5">
+              <div className="sensor-icon">
+                <div className="icon-bg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+              </div>
+              <h3>Particulate Matter</h3>
+              <p>PM2.5 and PM10 particle monitoring for air quality assessment. Laser-based optical particle counting.</p>
+              <div className="sensor-specs">
+                <span>Range: 0-1000 μg/m³</span>
+                <span>Accuracy: ±10%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Applications Section */}
+      <section className="applications-section section">
+        <div className="container">
+          <h2 className="section-title">Applications</h2>
+          <p className="section-subtitle">
+            Versatile IoT solution for various environmental monitoring needs
+          </p>
+          <div className="applications-grid grid grid-3">
+            <div className="application-card card">
+              <h3>Indoor Air Quality</h3>
+              <p>Monitor homes, offices, and public spaces for optimal health and comfort conditions.</p>
+            </div>
+            <div className="application-card card">
+              <h3>Industrial Monitoring</h3>
+              <p>Factory and workplace air quality monitoring for safety compliance and worker health.</p>
+            </div>
+            <div className="application-card card">
+              <h3>Research & Development</h3>
+              <p>Environmental research, climate studies, and air quality impact assessments.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="cta-section section">
+        <div className="container">
+          <div className="cta-content">
+            <h2 className="cta-title">Ready to Monitor Your Environment?</h2>
+            <p className="cta-subtitle">
+              Join the future of IoT air quality monitoring with Aeroband
             </p>
+            <div className="cta-buttons">
+              <button className="btn btn-primary" onClick={handleViewDashboard}>
+                Get Started Now
+              </button>
+              <button className="btn btn-secondary">
+                View Documentation
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }

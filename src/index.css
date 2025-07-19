@@ -1,13 +1,14 @@
 :root {
   --primary-color: #6366f1;
   --primary-dark: #4f46e5;
-  --secondary-color: #f8fafc;
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  --background: #ffffff;
-  --border-color: #e2e8f0;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --secondary-color: #8b5cf6;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --background: #0a0a0a;
+  --background-light: #111111;
+  --border-color: #27272a;
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3);
   --radius: 8px;
   --transition: all 0.3s ease;
 }
@@ -71,13 +72,13 @@ code {
 }
 
 .btn-secondary {
-  background-color: var(--secondary-color);
+  background-color: transparent;
   color: var(--text-primary);
   border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
-  background-color: var(--border-color);
+  background-color: rgba(99, 102, 241, 0.1);
   transform: translateY(-2px);
 }
 
@@ -85,7 +86,7 @@ code {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

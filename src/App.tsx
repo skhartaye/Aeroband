@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import BackToTop from './components/BackToTop'
 import Footer from './components/Footer'
@@ -10,6 +10,29 @@ import './App.css'
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate loading time for better UX
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 1000)
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (isLoading) {
+    return (
+      <div className="loading-screen">
+        <div className="loading-animation">
+          <div className="hexagon"></div>
+          <div className="hexagon"></div>
+          <div className="hexagon"></div>
+        </div>
+        <p>Connecting to Aeroband...</p>
+      </div>
+    )
+  }
 
   return (
     <Router>
