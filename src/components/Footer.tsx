@@ -25,7 +25,7 @@ const Footer = () => {
               <li><Link to="/">Home</Link></li>
               <li><Link to="/about">About</Link></li>
               <li><Link to="/contact">Contact</Link></li>
-              <li><a href="#" onClick={() => alert('Dashboard Coming Soon!')}>Dashboard</a></li>
+              <li><a href="https://iot.aeroband.org" target="_blank" rel="noopener noreferrer">Dashboard</a></li>
             </ul>
           </div>
 

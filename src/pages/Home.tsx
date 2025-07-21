@@ -15,7 +15,7 @@ const Home = () => {
   }
 
   const handleViewDashboard = () => {
-    alert('Aeroband Dashboard Coming Soon!')
+    window.location.href = 'https://iot.aeroband.org';
   }
 
   return (

@@ -32,7 +32,7 @@ const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
             <Link to="/contact" className="nav-link" onClick={() => setIsMenuOpen(false)}>
               Contact
             </Link>
-            <button className="btn btn-primary nav-cta">
+            <button className="btn btn-primary nav-cta" onClick={() => window.location.href = 'https://iot.aeroband.org'}>
               View Dashboard
             </button>
           </nav>
